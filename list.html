@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Games List</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="container">
+<div class="box">
+<input type="text" id="gsearchbar" onkeyup="document.querySelectorAll('#glist>a').forEach(l=>l.style.display=l.textContent.toUpperCase().includes(this.value.toUpperCase().replace(/ /g,''))?'block':'none')" autocomplete="off" spellcheck="false" placeholder="Search" />
+<div id="glist">
+<h2>Games!</h2>
+<a href="./gfiles/html5/cookieclicker/">Cookie Clicker</a>
+<h2>Gameboy Advance</h2>
+<a href="./gfiles/rarch/?core=mgba">Upload ROM</a>
+<h2>Genesis / Master System</h2>
+<a href="./gfiles/rarch/?core=genesis_plus_gx">Upload ROM</a>
+<h2>Nintendo 64</h2>
+<a href="./gfiles/rarch/?core=mupen64plus_next">Upload ROM</a>
+<h2>NES</h2>
+<a href="./gfiles/rarch/?core=nestopia">Upload ROM</a>
+<h2>Super Nintendo</h2>
+<a href="./gfiles/rarch/?core=snes9x">Upload ROM</a>
+</div>
+</div>
+</div>
+<script> </script>
+</body>
+</html>
