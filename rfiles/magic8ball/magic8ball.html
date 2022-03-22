@@ -2,6 +2,140 @@
 <html>
 	<head>
 	  <title>MAGIC 8 BALL</title>
-<script src="https://gist.github.com/adamschwartz/46ef105968cb4adf7235b40f25a6cb30.js"></script>
+<html>
+	<head>
+	  <title>MAGIC 8 BALL</title>
+
+	  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+	  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js'></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+	  <link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+	<body>
+		<div class="page">
+
+			<header>
+				<h1>MAGIC&nbsp;<span>8</span>&nbsp;BALL</h1>
+			</header>
+
+			<div class="ball">
+				<img id="8ball" src="https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/magic8ballQuestion.png">
+				<p id="answer" class="answer">THIS IS WHERE THE ANSWER GOES</p>
+			</div>
+
+			<div class="button">
+				<button id="questionButton">ASK ME ANYTHING </button>
+			</div>
+
+			<footer>
+				<p>&copy; Skillcrush 2016</p>
+			</footer>
+
+		  <script type="text/javascript" src="script.js"></script>
+	  </div>
+	</body>
+<style> 
+.page {
+  max-width: 960px;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #454545;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+header span {
+  font-size: 60px;
+  font-size: 2em;
+  color: #f16059;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.ball {
+position: relative;
+}
+.ball img{
+  width: 100%;
+  max-width: 40em;
+}
+.answer {
+  color: #222;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  top: 38%;
+  left: 46%;
+  width: 11%;
+  font-size: 80%;
+}
+
+#questionButton {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-size: 1.875em;
+  color: #f8f8f8;
+  background-color: #f16059;
+  border-radius: 5px;
+  border: none;
+  padding: .5em 1em;
+  width: 80%;
+  max-width: 15em;
+  margin-top: 1em;
+}
+
+footer p {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-size: .75em;
+}
+	</style>
+<script>
+$(document).ready(function(){
+  
+  var magic8Ball = {};
+  magic8Ball.listofanswers = ["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes, definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
+ 
+  magic8Ball.getAnswer = function(question)
+  {
+    var randomNumber = Math.random();
+    var randomAnswer = Math.floor(randomNumber * this.listofanswers.length);
+    var answer = this.listofanswers[randomAnswer];
+    
+    $("#8ball").effect( "shake" );
+    $("#answer").text( answer );
+    $("#answer").fadeIn(3000);
+    $("#8ball").attr("src", "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/answerside.png");
+
+    console.log(question);
+    console.log(answer);
+  };
+  $("#answer").hide();
+
+  var onClick = function()
+  {
+    $("#answer").hide();
+    $("#8ball").attr("src", "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/magic8ballQuestion.png");
+    var question = prompt("What do you want to know?");
+    magic8Ball.getAnswer(question);
+  };
+  
+  $("#questionButton").click( onClick );
+});
+	</script>
+</html>
 	</body>
 </html>
